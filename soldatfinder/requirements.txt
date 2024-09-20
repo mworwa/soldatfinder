@@ -1,0 +1,9 @@
+telethon==1.36.0
+python-Levenshtein==0.25.1
+fuzzywuzzy==0.18.0
+python-dateutil==2.9.0
+Flask==3.0.3
+jsonschema==4.23.0
+python-telegram-bot==21.5
+requests==2.32.3
+python-dotenv==1.0.1
