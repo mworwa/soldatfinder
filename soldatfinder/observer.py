@@ -106,7 +106,7 @@ def main():
                     )
                     await send_message(
                         soldier.chat_id,
-                        f"Znaleziono podobne imię w wiadomości: {message_url}",
+                        f"Similar name found in message: {message_url}",
                     )
 
                 if message_date and soldier.birthdate == message_date:
@@ -116,7 +116,7 @@ def main():
                     )
                     await send_message(
                         soldier.chat_id,
-                        f"Znaleziono datę w wiadomości: {message_url}",
+                        f"Date found in message: {message_url}",
                     )
             except Exception as e:
                 logger.error(f"Error processing soldier {soldier.name}: {e}")
