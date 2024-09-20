@@ -18,8 +18,6 @@ logger = logging.getLogger(__name__)
 def _match_name_in_message(
     message: str, target_name: str, threshold: int = 70
 ) -> bool:
-    """Check if both first name and surname of
-    the target_name are present in the message with a fuzzy match."""
     target_parts = target_name.split()
 
     if len(target_parts) != 2:
@@ -42,7 +40,6 @@ def _match_name_in_message(
 
 
 def _extract_date_from_message(message: str) -> Optional[date]:
-    """Extract date from the message if any."""
     try:
         parsed_date = parse(message, fuzzy=True)
         return parsed_date.date()
@@ -105,8 +102,12 @@ def main():
                         f"{event.message.id}"
                     )
                     await send_message(
-                        soldier.chat_id,
-                        f"Similar name found in message: {message_url}",
+                        chat_id=soldier.chat_id,
+                        message=(
+                            f"Similar name found in message: {message_url}"
+                            "---\n"
+                            f"Знайдено схоже ім'я в повідомленні {message_url}"
+                        ),
                     )
 
                 if message_date and soldier.birthdate == message_date:
@@ -115,8 +116,12 @@ def main():
                         f"{event.message.id}"
                     )
                     await send_message(
-                        soldier.chat_id,
-                        f"Date found in message: {message_url}",
+                        chat_id=soldier.chat_id,
+                        message=(
+                            f"Date found in message: {message_url}"
+                            "---\n"
+                            f"Дата знайдена в повідомленні: {message_url}"
+                        )
                     )
             except Exception as e:
                 logger.error(f"Error processing soldier {soldier.name}: {e}")

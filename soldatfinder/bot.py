@@ -111,8 +111,8 @@ async def _name(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     await context.bot.send_message(
         chat_id=update.effective_chat.id,
         text=(
-            "What is the <b>BIRTHDATE</b> of a soldier your are looking for?"
-            "Write data in format YYYY-MM-DD ex: 1991-08-24"
+            "What is the <b>BIRTHDATE</b> of a soldier your are looking for?\n"
+            "Write data in format YYYY-MM-DD ex: 1991-08-24\n"
             "---\n"
             "Яка <b>ДАТА НАРОДЖЕННЯ</b> солдата, якого ви шукаєте?\n"
             "Напишіть дату у форматі РРРР-ММ-ДД, наприклад: 1991-08-24"
