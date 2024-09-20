@@ -2,7 +2,7 @@
 
 https://t.me/SoldatFinderBot
 
-A Telegram bot designed to help families and loved ones find information about missing Ukrainian soldiers by monitoring multiple channels for updates.
+A Telegram bot designed to help families and loved ones find information about missing Ukrainian soldiers by monitoring multiple Telegram channels for updates.
 
 
 ## Table of Contents
@@ -35,7 +35,7 @@ In the ongoing conflict, many Ukrainian soldiers are reported missing, causing i
 
 ### Prerequisites
 
-- Python 3.x
+- Python 3.8+
 - [Telegram API ID](https://core.telegram.org/api/obtaining_api_id)
 - [Telegram Bot API Token](https://core.telegram.org/bots#3-how-do-i-create-a-bot)
 
