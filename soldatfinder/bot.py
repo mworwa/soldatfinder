@@ -39,14 +39,13 @@ async def _start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if update.effective_chat is None:
         raise ValueError("effective_chat is None")
 
-    starting_text = """
-    Hello! I'm a bot for finding soldiers.\n\n
-    You can control me by sending these commands:\n
-    /add - add soldier for finding\n
-    /remove - remove soldier
-    /show - show all soldiers\n\n
-    -----\n
-    """
+    starting_text = (
+        "Hello! I'm a bot for finding soldiers.\n\n"
+        "You can control me by sending these commands:\n"
+        "/add - add soldier for finding\n"
+        "/show - show all soldiers\n"
+    )
+
     await context.bot.send_message(
         chat_id=update.effective_chat.id, text=starting_text
     )
