@@ -40,17 +40,17 @@ async def _start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if update.effective_chat is None:
         raise ValueError("effective_chat is None")
     starting_text = (
-        "Hello! I'm here to help you find missing"
-        "soldiers by monitoring Telegram channels.\n\n"
-        "You can use me with these simple commands:\n"
-        "/add - Add the name of a soldier you're looking for\n"
-        "/show - See all the soldiers you're tracking\n\n"
-        "---\n\n"
         "Привіт! Я тут, щоб допомогти вам знайти зниклих солдатів,"
         "відстежуючи канали в Telegram.\n\n"
         "Ви можете користуватися мною за допомогою цих простих команд:\n"
         "/add - Додати ім'я солдата, якого ви шукаєте\n"
         "/show - Показати всіх солдатів, яких ви відстежуєте\n"
+        "---\n\n"
+        "Hello! I'm here to help you find missing"
+        "soldiers by monitoring Telegram channels.\n\n"
+        "You can use me with these simple commands:\n"
+        "/add - Add the name of a soldier you're looking for\n"
+        "/show - See all the soldiers you're tracking\n\n"
     )
 
     await context.bot.send_message(
@@ -69,19 +69,19 @@ async def _show(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await context.bot.send_message(
             chat_id=update.effective_chat.id,
             text=(
-                "You are not tracking any soldiers."
-                "Use /add to add a soldier.\n"
-                "---\n"
                 "Ви не відстежуєте жодного солдата"
                 "Використайте /add, щоб додати солдата."
+                "---\n"
+                "You are not tracking any soldiers."
+                "Use /add to add a soldier.\n"
             ),
         )
         return
     for soldier in soldiers:
         soldiers_text += (
-            f"Name: {soldier.name}, Birthdate: {soldier.birthdate}\n"
-            "---\n"
             f"Ім'я: {soldier.name}, Дата народження: {soldier.birthdate}"
+            "---\n"
+            f"Name: {soldier.name}, Birthdate: {soldier.birthdate}\n"
         )
     await context.bot.send_message(
         chat_id=update.effective_chat.id, text=soldiers_text
@@ -95,10 +95,10 @@ async def _add(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await context.bot.send_message(
         chat_id=update.effective_chat.id,
         text=(
+            "Яке <b>ІМ'Я та ПРІЗВИЩЕ</b> солдата, якого ви шукаєте?\n"
+            "---\n"
             "What is the <b>NAME and SURNAME</b> of a soldier your"
             "are looking for?\n"
-            "---\n"
-            "Яке <b>ІМ'Я та ПРІЗВИЩЕ</b> солдата, якого ви шукаєте?\n"
         ),
         parse_mode=constants.ParseMode.HTML,
     )
@@ -113,11 +113,11 @@ async def _name(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     await context.bot.send_message(
         chat_id=update.effective_chat.id,
         text=(
-            "What is the <b>BIRTHDATE</b> of a soldier your are looking for?\n"
-            "Write data in format YYYY-MM-DD ex: 1991-08-24\n"
-            "---\n"
             "Яка <b>ДАТА НАРОДЖЕННЯ</b> солдата, якого ви шукаєте?\n"
             "Напишіть дату у форматі РРРР-ММ-ДД, наприклад: 1991-08-24"
+            "---\n"
+            "What is the <b>BIRTHDATE</b> of a soldier your are looking for?\n"
+            "Write data in format YYYY-MM-DD ex: 1991-08-24\n"
         ),
         parse_mode=constants.ParseMode.HTML,
     )
@@ -132,10 +132,10 @@ async def _birthdate(
         birthdate = update.message.text
         context.user_data["birthdate"] = parse(birthdate)
         await update.message.reply_text(
-            "Soldier added. You can add more soldiers with /add\n"
-            "---\n"
             "Солдата додано."
             "Ви можете додати більше солдатів за допомогою /add"
+            "---\n"
+            "Soldier added. You can add more soldiers with /add\n"
         )
 
         soldiers_repository.add(
@@ -149,18 +149,22 @@ async def _birthdate(
 
     except ValueError:
         await update.message.reply_text(
-            "Invalid birthdate format. Format YYYY-MM-DD ex: 1991-08-24"
-            "---\n"
             "Неправильний формат дати народження. "
             "Формат РРРР-ММ-ДД, наприклад: 1991-08-24"
+            "---\n"
+            "Invalid birthdate format. Format YYYY-MM-DD ex: 1991-08-24"
         )
         return BIRTHDATE
 
 
 async def _unknown(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text(
-        "Sorry, I didn't understand that command.",
-        "Вибачте, я не зрозумів цю команду.",
+    await context.bot.send_message(
+        chat_id=update.effective_chat.id,
+        text=(
+            "Вибачте, я не зрозумів цю команду."
+            "---\n"
+            "Sorry, I didn't understand that command.\n"
+        ),
     )
 
 
