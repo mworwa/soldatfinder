@@ -11,6 +11,7 @@ from telegram.ext import (
 )
 from soldiers import SoldierRepository
 from dotenv import load_dotenv
+from dateutil.parser import parse
 
 load_dotenv()
 
@@ -128,7 +129,7 @@ async def _birthdate(
 ) -> int:
     try:
         birthdate = update.message.text
-        context.user_data["birthdate"] = birthdate
+        context.user_data["birthdate"] = parse(birthdate)
         await update.message.reply_text(
             "Soldier added. You can add more soldiers with /add\n"
             "---\n"
