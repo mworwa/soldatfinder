@@ -81,18 +81,16 @@ Monitors the specified Telegram channels for updates.
 python observer.py
 ```
 ## Channels
-SoldatFinder monitors this channels:
-- https://web.telegram.org/a/#-1001542074211
-- https://web.telegram.org/a/#-1001923497239
-- https://web.telegram.org/a/#-1001666094161
-- https://web.telegram.org/a/#-1001676376547
-- https://web.telegram.org/a/#-1001909925694
-- https://web.telegram.org/a/#-1001285348580
-- https://web.telegram.org/a/#-1001837743468
-- https://web.telegram.org/a/#-1001689374765
-- https://web.telegram.org/a/#-1001453960815
-- https://web.telegram.org/a/#-1002061108277
+- https://t.me/PodariNadezhdy
+- https://t.me/borshukr
+- https://t.me/edynaUA
+- https://t.me/NezlamniPoshukUa
+- https://t.me/poshukpidchasviyniua
+- https://t.me/cfddffhu4rt
+- https://t.me/xoxol_uk
+- https://t.me/poschukUA
 
+SoldatFinder monitors this channels:
 If you know any other channels that might contains usefull informations please create Issue
 ## Configuration
 
