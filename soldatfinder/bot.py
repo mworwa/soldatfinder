@@ -95,9 +95,10 @@ async def _add(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await context.bot.send_message(
         chat_id=update.effective_chat.id,
         text=(
-            "What is the <b>NAME</b> of a soldier your are looking for?\n"
+            "What is the <b>NAME and SURNAME</b> of a soldier your"
+            "are looking for?\n"
             "---\n"
-            "Яке <b>ІМ'Я</b> солдата, якого ви шукаєте?\n"
+            "Яке <b>ІМ'Я та ПРІЗВИЩЕ</b> солдата, якого ви шукаєте?\n"
         ),
         parse_mode=constants.ParseMode.HTML,
     )
