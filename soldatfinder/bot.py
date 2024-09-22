@@ -158,12 +158,9 @@ async def _birthdate(
 
 
 async def _unknown(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await context.bot.send_message(
-        chat_id=update.effective_chat.id,
-        text=(
-            "Sorry, I didn't understand that command.",
-            "Вибачте, я не зрозумів цю команду."
-        )
+    await update.message.reply_text(
+        "Sorry, I didn't understand that command.",
+        "Вибачте, я не зрозумів цю команду.",
     )
 
 
